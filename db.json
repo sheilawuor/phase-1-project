@@ -1,0 +1,52 @@
+{
+  "quotes": [
+    {
+      "id": 1,
+      "text": "Love all, trust a few, do wrong to none.",
+      "author": "William Shakespeare",
+      "category": "love"
+    },
+    {
+      "id": 2,
+      "text": "The best thing to hold onto in life is each other.",
+      "author": "Audrey Hepburn",
+      "category": "love"
+    },
+    {
+      "id": 3,
+      "text": "The future belongs to those who believe in the beauty of their dreams.",
+      "author": "Eleanor Roosevelt",
+      "category": "motivational"
+    },
+    {
+      "id": 4,
+      "text": "Don’t watch the clock; do what it does. Keep going.",
+      "author": "Sam Levenson",
+      "category": "motivational"
+    },
+    {
+      "id": 5,
+      "text": "A friend is someone who knows all about you and still loves you.",
+      "author": "Elbert Hubbard",
+      "category": "friendship"
+    },
+    {
+      "id": 6,
+      "text": "Friendship is the only cement that will ever hold the world together.",
+      "author": "Woodrow Wilson",
+      "category": "friendship"
+    },
+    {
+      "id": 7,
+      "text": "Happiness depends upon ourselves.",
+      "author": "Aristotle",
+      "category": "life"
+    },
+    {
+      "id": 8,
+      "text": "In the middle of every difficulty lies opportunity.",
+      "author": "Albert Einstein",
+      "category": "life"
+    }
+  ]
+}
