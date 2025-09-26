@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUOTIFY</title>
+    <title>QUOTE GENERATOR</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add jsPDF for PDF downloads -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
+   
 <body>
     <h1>QUOTIFY</h1>
-
-    <!-- Quote display -->
     <div id="quote"></div>
-
-    <!-- Action buttons -->
     <button id="generateBtn">Generate Random Quote</button>
     <button id="likeBtn">Like</button>
-
-    <!-- Liked Quotes -->
+    <button id="downloadBtn">Download</button> 
     <h2>Liked Quotes</h2>
     <ol id="likedQuotesList"></ol>
-
-    <!-- Script -->
+    
     <script src="main.js"></script>
 </body>
 </html>
+
 

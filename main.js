@@ -1,57 +1,105 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const quoteElement = document.getElementById('quote');
-    const generateBtn = document.getElementById('generateBtn');
-    const likeBtn = document.getElementById('likeBtn');
-    const likedQuotesList = document.getElementById('likedQuotesList');
 
-    let likedQuotes = [];
-    let currentQuote = null;
+document.addEventListener('DOMContentLoaded', function () {
+  const quoteElement = document.getElementById('quote');
+  const generateBtn = document.getElementById('generateBtn');
+  const likeBtn = document.getElementById('likeBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const likedQuotesList = document.getElementById('likedQuotesList');
 
-    // Event listener for generating a random quote
-    generateBtn.addEventListener('click', getRandomQuote);
+  let quotesCache = [];
+  let currentQuote = null;
+  let likedQuotes = [];
 
-    // Event listener for liking a quote
-    likeBtn.addEventListener('click', likeQuote);
+  // Fetch quotes from db.json (json-server must be running: json-server --watch db.json --port 3001)
+  fetch('http://localhost:3001/quotes')
+    .then(res => res.json())
+    .then(data => {
+      quotesCache = data; // db.json returns an array of quotes
+      if (quotesCache.length > 0) {
+        showRandomQuote();
+      } else {
+        quoteElement.textContent = "No quotes available.";
+      }
+    })
+    .catch(err => {
+      console.error('Error fetching quotes:', err);
+      quoteElement.textContent = "Could not load quotes. Is json-server running?";
+    });
 
-    // Function to fetch a random quote from the db.json API
-    function getRandomQuote() {
-        fetch('http://localhost:3001/quotes')
-            .then(response => response.json())
-            .then(data => {
-                // data is an array of quotes
-                const randomIndex = Math.floor(Math.random() * data.length);
-                currentQuote = data[randomIndex];
+  // Render one quote
+  function renderQuote(quote) {
+    if (!quote) return;
+    quoteElement.textContent = `"${quote.text}" — ${quote.author}`;
+    currentQuote = quote;
+  }
 
-                // display quote text + author
-                quoteElement.textContent = `"${currentQuote.text}" — ${currentQuote.author}`;
-            })
-            .catch(error => {
-                console.error('Error fetching quote:', error);
-                quoteElement.textContent = "Oops! Could not load a quote.";
-            });
+  // Show random quote
+  function showRandomQuote() {
+    if (quotesCache.length === 0) return;
+    const idx = Math.floor(Math.random() * quotesCache.length);
+    renderQuote(quotesCache[idx]);
+  }
+
+  // Event: Generate
+  function getRandomQuote() {
+    if (quotesCache.length === 0) {
+      quoteElement.textContent = "Loading quotes...";
+      return;
+    }
+    showRandomQuote();
+  }
+
+  // Event: Like
+  function likeQuote() {
+    if (!currentQuote) {
+      alert("Generate a quote first!");
+      return;
     }
 
-    // Function to like a quote
-    function likeQuote() {
-        if (currentQuote) {
-            likedQuotes.push(currentQuote);
-            displayLikedQuotes();
-        } else {
-            alert('Generate a quote first!');
-        }
+    if (!likedQuotes.includes(currentQuote)) {
+      likedQuotes.push(currentQuote);
+      displayLikedQuotes();
+      alert("Quote liked!");
+    } else {
+      alert("Already liked this one.");
+    }
+  }
+
+  // Show liked quotes
+  function displayLikedQuotes() {
+    likedQuotesList.innerHTML = "";
+    likedQuotes.forEach(q => {
+      const li = document.createElement("li");
+      li.textContent = `"${q.text}" — ${q.author}`;
+      likedQuotesList.appendChild(li);
+    });
+  }
+
+  // Event: Download (as PDF with jsPDF)
+  function downloadQuote() {
+    if (!currentQuote) {
+      alert("Generate a quote first!");
+      return;
     }
 
-    // Function to display liked quotes
-    function displayLikedQuotes() {
-        likedQuotesList.innerHTML = '';
-        likedQuotes.forEach(quote => {
-            const li = document.createElement('li');
-            li.textContent = `"${quote.text}" — ${quote.author}`;
-            likedQuotesList.appendChild(li);
-        });
-    }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("Quotify - Your Quote", 20, 20);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.text(`"${currentQuote.text}"`, 20, 40, { maxWidth: 170 });
+    doc.text(`— ${currentQuote.author}`, 20, 60);
+
+    doc.save("quote.pdf");
+  }
+
+  // Attach listeners
+  generateBtn.addEventListener("click", getRandomQuote);
+  likeBtn.addEventListener("click", likeQuote);
+  downloadBtn.addEventListener("click", downloadQuote);
 });
-
-
-
 
