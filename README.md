@@ -25,7 +25,7 @@ You need to clone this repository to your local environment (machine) to be able
 ### Installation Instructions
 
 ```bash
-git clone https://github.com/omolojohn/Phase-1-project.git
+git clone https://github.com/sheilawuor/phase-1-project.git
 ```
 
 ## Getting Started
@@ -48,7 +48,7 @@ This project does not have any external dependencies. It uses vanilla JavaScript
 
 ## Live Link
 
-[https://omolojohn.github.io/Phase-1-project/](https://omolojohn.github.io/Phase-1-project/)
+
 
 ## Technologies Used
 
@@ -63,7 +63,7 @@ Contributions are welcome! If you have any suggestions, feature requests, or bug
 
 ## Support and Contact Details
 
-- [github/quotableapi/omolojohn](https://github.com/omolojohn)
+- https://github.com/sheilawuor
 
 ## License
 
