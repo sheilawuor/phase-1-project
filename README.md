@@ -5,7 +5,7 @@ By: Sheila Awuor Odhiambo
 
 ## Description
 
-This is a simple web application that allows users to generate random quotes and like them. The quotes are fetched from a db.json file I made to mock an API.
+This is a simple web application that allows users to generate random quotes, download and like them. The quotes are fetched from a db.json file I made to mock an API hosted on port 3001.
 
 ## Features
 
@@ -39,7 +39,6 @@ To use this application, follow these steps:
 
 - Click the **"Generate Quote"** button to fetch and display a random quote.
 - Click the **"Like"** button to save the currently displayed quote to your liked quotes list.
-- Click the **"Share"** button to share the currently displayed quote on social media platforms.
 - Click the **"Download"** button to download the currently displayed quote as a text file.
 
 ## Dependencies
