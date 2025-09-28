@@ -11,8 +11,8 @@ This is a simple web application that allows users to generate random quotes, do
 
 - Generate random quotes with the click of a button.
 - Like quotes to save them for later viewing.
-- Share quotes on social media platforms.
-- Download quotes as text files.
+- Save quotes in a list.
+- Download quotes as PDF.
 
 ## Installation
 
