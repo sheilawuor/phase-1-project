@@ -47,7 +47,7 @@ This project does not have any external dependencies. It uses vanilla JavaScript
 
 ## Live Link
 
-
+https://bucolic-bavarois-4639ca.netlify.app/
 
 ## Technologies Used
 
